@@ -31,7 +31,7 @@ const words = [
     "problem-solving",
     "creativity",
     "design",
-  ];
+];
 let selectedWord;
 let guessedLetters;
 let incorrectGuesses;
@@ -50,6 +50,7 @@ function init() {
     document.getElementById('wrongGuesses').innerText = '';
     drawWord();
     drawHangman();
+    createKeypad();
     document.addEventListener('keydown', handleKeyPress);
     modal.style.display = 'none';
 }
@@ -79,8 +80,8 @@ function drawHangman() {
 
     context.beginPath();
     context.moveTo(50, 190);
-    context.lineTo(50, 10); 
-    context.lineTo(150, 10); 
+    context.lineTo(50, 10);
+    context.lineTo(150, 10);
     context.lineTo(150, 30);
     context.stroke();
     
@@ -149,6 +150,29 @@ function handleKeyPress(event) {
     checkGameStatus();
 }
 
+function handleKeypadPress(event) {
+    const guess = event.target.innerText.toLowerCase();
+    if (!/[a-z]/.test(guess) || guess.length !== 1) {
+        return;
+    }
+
+    if (guessedLetters.includes(guess)) {
+        showMessage('Already used it');
+        return;
+    }
+
+    guessedLetters.push(guess);
+
+    if (!selectedWord.includes(guess)) {
+        incorrectGuesses++;
+        updateWrongGuesses(guess);
+        drawHangman();
+    }
+
+    drawWord();
+    checkGameStatus();
+}
+
 function updateWrongGuesses(letter) {
     const wrongGuesses = document.getElementById('wrongGuesses');
     const wrongGuess = document.createElement('div');
@@ -160,7 +184,7 @@ function updateWrongGuesses(letter) {
 function showMessage(msg) {
     const message = document.getElementById('message');
     message.innerText = msg;
-    message.style.padding = '15px 0'; 
+    message.style.padding = '15px 0';
     setTimeout(() => {
         message.innerText = '';
         message.style.padding = '0';
@@ -175,7 +199,7 @@ function checkGameStatus() {
         modalMessage.innerText = 'Congratulations! You won!';
         showModal();
     } else if (incorrectGuesses >= maxIncorrectGuesses) {
-        modalMessage.innerText = `You Lost!  The word was: ${selectedWord}`;
+        modalMessage.innerText = `You Lost! The word was: ${selectedWord}`;
         showModal();
     }
 }
@@ -188,6 +212,19 @@ function showModal() {
 function resetGame() {
     document.removeEventListener('keydown', handleKeyPress);
     init();
+}
+
+function createKeypad() {
+    const keypad = document.getElementById('keypad');
+    keypad.innerHTML = '';
+    const letters = 'abcdefghijklmnopqrstuvwxyz';
+    for (let letter of letters) {
+        const button = document.createElement('button');
+        button.className = 'keypad-button';
+        button.innerText = letter;
+        button.addEventListener('click', handleKeypadPress);
+        keypad.appendChild(button);
+    }
 }
 
 window.onload = init;
