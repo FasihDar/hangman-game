@@ -1,0 +1,102 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #4682B4;
+    color: white;
+}
+
+.container {
+    text-align: center;
+}
+
+.bothElements {
+    margin-top: 80px;
+    display: flex;
+    justify-content: space-around;
+}
+
+#hangmanCanvas {
+    margin-bottom: 20px;
+}
+
+#wordContainer {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+#wrongGuesses {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.bothWrong {
+    display: flex;
+    flex-direction: column;
+}
+
+#message {
+    margin-top: 20px;
+    font-size: 18px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 7px;
+}
+
+.dash {
+    display: inline-block;
+    width: 20px;
+    border-bottom: 2px solid #cfcfcf;
+    margin: 0 5px;
+    text-align: center;
+    font-size: 24px;
+    font-family: monospace;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #313131;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .bothElements {
+        flex-direction: column;
+        margin-top: 20px;
+    }
+
+    #hangmanCanvas {
+        width: 60%;
+        margin: 0 auto 20px;
+    }
+    #wrongGuesses{
+        display: flex;
+        justify-content: space-evenly;
+    }
+    .modal{
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
