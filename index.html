@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hangman Game</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
     <div class="container">
         <h1>Hangman</h1>
         <p>Can you guess the hidden word? Please enter a letter.</p>
-        <div class="bothElements"><canvas id="hangmanCanvas" width="200" height="200"></canvas>
-            <div class="bothWrong"><h3>Wrong</h3>
-            <div id="wrongGuesses"></div>
-        </div>
+        <div class="bothElements">
+            <canvas id="hangmanCanvas" width="200" height="200"></canvas>
+            <div class="bothWrong">
+                <h3>Wrong</h3>
+                <div id="wrongGuesses"></div>
+            </div>
         </div>
         <div id="wordContainer"></div>
         <div id="message"></div>
+        <div id="keypad" class="keypad"></div>
     </div>
     <div id="gameOverModal" class="modal">
         <div class="modal-content">
