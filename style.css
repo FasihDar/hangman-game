@@ -1,3 +1,4 @@
+/* Existing styles */
 body {
     font-family: Arial, sans-serif;
     display: flex;
@@ -79,6 +80,25 @@ body {
     text-align: center;
 }
 
+#keypad {
+    display: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.keypad-button {
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+    text-align: center;
+    line-height: 30px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #f0f0f0;
+}
+
 @media (max-width: 768px) {
     .bothElements {
         flex-direction: column;
@@ -89,14 +109,17 @@ body {
         width: 60%;
         margin: 0 auto 20px;
     }
-    #wrongGuesses{
+    #wrongGuesses {
         display: flex;
         justify-content: space-evenly;
     }
-    .modal{
+    .modal {
         position: fixed;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+    }
+    #keypad {
+        display: flex;
     }
 }
