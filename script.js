@@ -175,7 +175,7 @@ function checkGameStatus() {
         modalMessage.innerText = 'Congratulations! You won!';
         showModal();
     } else if (incorrectGuesses >= maxIncorrectGuesses) {
-        modalMessage.innerText = `You Lost! The word was: ${selectedWord}`;
+        modalMessage.innerText = `You Lost!  The word was: ${selectedWord}`;
         showModal();
     }
 }
